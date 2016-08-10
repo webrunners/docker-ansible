@@ -2,7 +2,8 @@ FROM williamyeh/ansible:alpine3-onbuild
 
 RUN adduser -u 1000 -D -h /home/webrunners -g "" -s /bin/false webrunners
 RUN apk --update add \
- rsync
+ rsync \
+ openssh-client
 
 USER webrunners
 RUN mkdir -p /home/webrunners/app
