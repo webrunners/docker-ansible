@@ -1,0 +1,5 @@
+Host default *.vagrant
+StrictHostKeyChecking no
+ForwardAgent yes
+User vagrant
+Hostname %h

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ $1 == '--clear' ]];
+  then
+    eval `keychain --clear --agents ssh --eval id_rsa --quiet`
+    shift
+elif [[ $1 == '--clear-only' ]];
+  then
+    keychain --clear
+    shift
+else
+  eval `keychain --agents ssh --eval id_rsa --quiet`
+fi
+
+eval `echo $@|sed 's/_QUOTED_/"/g'`
