@@ -1,17 +1,14 @@
 FROM ubuntu:14.04
 
-MAINTAINER Ruben Nicolaides <ruben.nicolaides@webrunners.de>
-
-
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install --no-install-recommends -y -q \
             build-essential \
             python-pip python-dev python-yaml \
-            libxml2-dev libxslt1-dev zlib1g-dev \
+            libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev \
             ssh rsync unzip keychain && \
     pip install --upgrade pyyaml jinja2 pycrypto && \
-    pip install --upgrade ansible markupsafe && \
+    pip install --upgrade ansible==1.9.4 markupsafe && \
     apt-get remove -y --auto-remove \
             build-essential python-pip python-dev && \
     apt-get clean -y && \
