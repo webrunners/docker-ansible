@@ -1,10 +1,11 @@
 FROM williamyeh/ansible:alpine3
 
 RUN adduser -u 1000 -D -h /home/webrunners -g "" -s /bin/false webrunners
-RUN apk --update add \
- rsync \
- openssh-client \
- less
+RUN apk --update add\
+ rsync\
+ openssh-client\
+ less\
+ vim
 
 USER webrunners
 RUN mkdir -p /home/webrunners/app
