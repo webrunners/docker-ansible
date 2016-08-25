@@ -1,10 +1,9 @@
 FROM williamyeh/ansible:debian8
 
-RUN adduser -u 1000 --disabled-password webrunners --home /home/webrunners --gecos "" --shell /bin/false
-
+RUN adduser webrunners -u 1000 --disabled-password --home /home/webrunners --gecos "" --shell /bin/false
 RUN apt-get update -q \
   && apt-get dist-upgrade -y \
-  && apt-get install -yq --no-install-recommends apt-utils rsync
+  && apt-get install -yq --no-install-recommends apt-utils rsync less
 
 USER webrunners
 RUN mkdir -p /home/webrunners/app
