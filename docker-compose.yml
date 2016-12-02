@@ -1,0 +1,18 @@
+version: '2'
+services:
+  ansible:
+    # build: .
+    image: webrunners/ansible:debian8
+    volumes:
+      # - $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent
+      - .:/home/webrunners/app
+      - $KNOWN_HOSTS_PATH:/home/webrunners/.ssh/known_hosts:ro
+      - $PRIVATE_KEY_PATH:/home/webrunners/.ssh/$COMPOSE_KEY:ro
+    environment:
+      # ANSIBLE_STDOUT_CALLBACK: skippy_extended
+      ANSIBLE_RETRY_FILES_ENABLED: 0
+      ANSIBLE_FORCE_COLOR: 1
+      ANSIBLE_SSH_PIPELINING: 1
+      # ANSIBLE_HOST_KEY_CHECKING: 0
+      # PYTHONUNBUFFERED: 1
+      TERM: linux
