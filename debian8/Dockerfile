@@ -5,6 +5,7 @@ RUN apt-get update -q &&\
  apt-get dist-upgrade -y &&\
  apt-get install -yq --no-install-recommends apt-utils rsync less vim
 
+COPY ansible.cfg /etc/ansible/
 COPY ssh-agent-wrapper /usr/local/bin/agent
 RUN chmod a+x /usr/local/bin/agent
 
