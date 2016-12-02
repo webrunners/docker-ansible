@@ -1,0 +1,10 @@
+#!/bin/bash
+eval $(ssh-agent -s)
+cp ~/.ssh/id_rsa_tmp ~/id_rsa_tmp
+chmod 0400 ~/id_rsa_tmp
+ssh-add ~/id_rsa_tmp
+echo -n `ssh-add -L`
+echo -n " `ssh-add -l`"
+echo " `whoami`@${HOSTNAME}"
+
+$@
