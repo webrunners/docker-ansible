@@ -15,6 +15,6 @@ USER webrunners
 RUN mkdir -p /home/webrunners/app
 WORKDIR /home/webrunners/app
 
-ENTRYPOINT [ "ansible-playbook", "--vault-password-file", "vault_pass.txt", "-i" ]
+ENTRYPOINT [ "agent" ]
 
-CMD [ "env/dev", "--list-hosts", "run/provision.yml" ]
+CMD [ "ansible-playbook", "--version" ]

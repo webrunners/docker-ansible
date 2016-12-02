@@ -1,10 +1,13 @@
 #!/bin/bash
-eval $(ssh-agent -s)
-cp ~/.ssh/id_rsa_tmp ~/id_rsa_tmp
-chmod 0400 ~/id_rsa_tmp
-ssh-add ~/id_rsa_tmp
-echo -n `ssh-add -L`
-echo -n " `ssh-add -l`"
-echo " `whoami`@${HOSTNAME}"
+
+if [[ -f ~/.ssh/id_rsa_agent ]]; then
+    eval $(ssh-agent -s)
+    cp ~/.ssh/id_rsa_agent ~/id_rsa_agent
+    chmod 0400 ~/id_rsa_agent
+    ssh-add ~/id_rsa_agent
+    echo -n `ssh-add -L`
+    echo -n " `ssh-add -l`"
+    echo " `whoami`@${HOSTNAME}"
+fi
 
 $@
